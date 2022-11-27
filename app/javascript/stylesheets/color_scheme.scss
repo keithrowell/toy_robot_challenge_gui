@@ -1,0 +1,29 @@
+@use "sass:map";
+
+
+// $primary:  #1E4B58;
+// $secondary: #5F3F17;
+$secondary:  #495057;
+$primary: #214350;
+$sky-blue: #9DB0BF;
+
+// $white: #f9f9f9;
+$white: #fff;
+$light-grey: #f9f9f9;
+$medium-grey: #E4E4E4;
+
+
+
+$theme-colors: (
+  "primary":  $primary,
+  "secondary": $secondary,
+
+  "success": #188754,
+  "info": #495057,
+  "warning": #fd7e14,
+  "danger": #b02a37,
+  "light": #e6e6e6,
+  "dark": #1b1e23,
+  "white": #fff,
+  "black": #000,
+);

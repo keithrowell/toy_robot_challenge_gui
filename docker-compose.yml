@@ -1,0 +1,105 @@
+version: "3.9"
+
+networks:
+  main:
+
+services:
+
+
+
+  redis_service:
+    image: redis
+    container_name: toy_robot_gui-redis-service
+    restart: unless-stopped
+    networks:
+      - main
+    expose:
+      - 6379
+    volumes:
+      - ./log:/var/log:delegated
+      - ./.docker_volumes/redis_service:/data:delegated
+      - ./config/redis-service.conf:/usr/local/etc/redis/redis.conf:cached
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 1s
+      retries: 10
+
+
+  shell:
+    build: .
+    image: toy_robot_gui
+    container_name: toy_robot_gui-shell
+    working_dir: /toy_robot_gui
+    command: /bin/bash -c "rm -f tmp/shell-ready.txt && yarn && bundle && touch tmp/shell-ready.txt && tail -f /dev/null"
+    environment:
+      BUNDLE_PATH: /bundle
+      EDITOR: /usr/bin/vim
+    networks:
+      - main
+    volumes:
+      - ../gem/toy_robot:/toy_robot/gem:delegated
+      - ./:/toy_robot_gui:cached
+      - ./.docker_volumes/bundle:/bundle:delegated
+    depends_on:
+      redis_service:
+        condition: service_healthy
+    healthcheck:
+      test: test -f tmp/shell-ready.txt
+      interval: 30s
+      timeout: 1s
+      retries: 40
+
+  webpack:
+    image: toy_robot_gui
+    container_name: toy_robot_gui-webpack
+    working_dir: /toy_robot_gui
+    command: /bin/bash -c "bin/webpack-dev-server"
+    environment:
+      BUNDLE_PATH: /bundle
+      EDITOR: /usr/bin/vim
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    networks:
+      - main
+    volumes:
+      - ../gem/toy_robot:/toy_robot/gem:delegated
+      - ./:/toy_robot_gui:delegated
+      - ./.docker_volumes/bundle:/bundle:cached
+    ports:
+      - 3035:3035
+    depends_on:
+      shell:
+        condition: service_healthy
+    healthcheck:
+      test: curl -I http://localhost:3035
+      interval: 20s
+      timeout: 1s
+      retries: 10
+
+  web:
+    image: toy_robot_gui
+    container_name: toy_robot_gui-web
+    working_dir: /toy_robot_gui
+    command: /bin/bash -c "rm -f tmp/pids/server.pid && bin/rails s --binding=0.0.0.0 --port=3000"
+    tty: true
+    stdin_open: true
+    environment:
+      BUNDLE_PATH: /bundle
+      EDITOR: /usr/bin/vim
+      WEBPACKER_DEV_SERVER_HOST: webpack
+    networks:
+      - main
+    volumes:
+      - ../gem/toy_robot:/toy_robot/gem:delegated
+      - ./:/toy_robot_gui:cached
+      - ./.docker_volumes/bundle:/bundle:delegated
+    ports:
+      - 3000:3000
+    depends_on:
+      webpack:
+        condition: service_healthy
+    healthcheck:
+      test: curl -I http://localhost:3000
+      interval: 20s
+      timeout: 1s
+      retries: 10

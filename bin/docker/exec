@@ -1,0 +1,2 @@
+project=$(basename $(pwd))
+docker exec -it $project-shell $1 $2 $3 $4 $5

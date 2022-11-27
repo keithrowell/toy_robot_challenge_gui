@@ -1,0 +1,2 @@
+project=$(basename $(pwd))
+docker logs -f $project-$1
