@@ -22,3 +22,7 @@ Run using docker:
 - `bin/docker/up`
 - `bin/docker/start`
 - visit <http://localhost:3000>
+
+## Screenshot
+
+<img width="931" alt="Screenshot 2024-07-08 at 18 43 40" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/4fe18e48-8d83-475a-ae93-f4d16bc0bc98">
