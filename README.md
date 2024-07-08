@@ -25,4 +25,4 @@ Run using docker:
 
 ## Screenshot
 
-<img width="931" alt="Screenshot 2024-07-08 at 18 43 40" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/4fe18e48-8d83-475a-ae93-f4d16bc0bc98">
+<img width="931" alt="Screenshot" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/4fe18e48-8d83-475a-ae93-f4d16bc0bc98">
