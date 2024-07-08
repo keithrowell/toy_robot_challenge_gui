@@ -66,5 +66,5 @@ gem "bcrypt_pbkdf", "~> 1.1"
 
 gem 'listen', '~> 3.3'
 
-# gem 'toy_robot', path: '../gem/toy_robot'
-gem 'toy_robot', path: '/toy_robot/gem'
+# gem 'toy_robot', path: '../gem/toy_robot'  # when running on local machine
+gem 'toy_robot', path: '/toy_robot/gem'  # when running on docker
