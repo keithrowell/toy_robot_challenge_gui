@@ -23,6 +23,29 @@ Run using docker:
 - `bin/docker/start`
 - visit <http://localhost:3000>
 
-## Screenshot
+## Screenshots
+
+The App:
 
 <img width="931" alt="Screenshot" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/4fe18e48-8d83-475a-ae93-f4d16bc0bc98">
+
+The main page for the app:
+
+<img width="849" alt="Main Page" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/30da2956-8724-4d33-83c8-2c71401657c5">
+
+The game board component, defined as an SVG:
+
+<img width="1165" alt="the game board component" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/17393047-7fc9-4ba7-add8-720e25a13458">
+
+The game board's robot graphic, also defined as an SVG (drawn in a graphics package and exported as an SVG):
+
+<img width="1158" alt="the game board's robot graphic" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/12014174-435e-4931-b461-fb49486cf89e">
+
+And some of the Vue code for the board component:
+
+<img width="1040" alt="some of the Vue code for the board component" src="https://github.com/keithrowell/toy_robot_challenge_gui/assets/792745/22fd54a5-c1f3-4d86-abdc-0a2c74bb335b">
+
+
+
+
+
