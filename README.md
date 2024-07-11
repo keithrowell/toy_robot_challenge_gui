@@ -1,10 +1,10 @@
 # Toy Robot Challenge GUI
 
-As an extra to a [Toy Robot Challenge](https://github.com/keithrowell/toy_robot_challenge_gui), I built a GUI to interact with the robot.
+As an extra to a [Toy Robot Challenge](https://github.com/keithrowell/toy_robot_challenge), I built a GUI to interact with the robot.
 
 ## How to Run
 
-Have this repository and the [Toy Robot Challenge](https://github.com/keithrowell/toy_robot_challenge_gui) repositiory share the same parent directory, with the Toy Robot Challenge code in a directory called `gem`.
+Have this repository and the [Toy Robot Challenge](https://github.com/keithrowell/toy_robot_challenge) repositiory share the same parent directory, with the [Toy Robot Challenge](https://github.com/keithrowell/toy_robot_challenge) code in a directory called `gem`.
 
 ```shell
 drwxr-xr-x  11 keith  staff      352 Nov 28  2022 .
